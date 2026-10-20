@@ -1,9 +1,9 @@
 import js from '@eslint/js';
+import eslintPluginPlaywright from 'eslint-plugin-playwright';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
-import { defineConfig } from 'eslint/config';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import eslintPluginPlaywright from 'eslint-plugin-playwright';
 
 export default defineConfig([
   { ignores: ['package-lock.json', 'playwright-report/**', 'test-results/**'] },
@@ -25,16 +25,17 @@ export default defineConfig([
     },
   },
   eslintPluginPlaywright.configs['flat/recommended'],
-  {rules: {
-    'playwight/no-nested-step': 'off',
-  },
-  settings: {
-    playwirght: {
-      globalAliases: {
-        test: ['setup'],
+  {
+    rules: {
+      'playwight/no-nested-step': 'off',
+    },
+    settings: {
+      playwirght: {
+        globalAliases: {
+          test: ['setup'],
+        },
       },
     },
-  },
   },
   eslintPluginPrettierRecommended,
 ]);
