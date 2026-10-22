@@ -1,0 +1,17 @@
+import { expect, test } from '@playwright/test';
+
+test('homepage title', async ({ page }) => {
+  // Act
+  await page.goto('');
+
+  // Assert
+  await expect(page).toHaveTitle(/GAD/);
+});
+
+test('articles page title', async ({ page }) => {
+  // Act
+  await page.goto('/articles.html');
+
+  // Assert
+  await expect(page).toHaveTitle(/Article/);
+});
