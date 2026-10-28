@@ -3,7 +3,7 @@ import { CommentsPage } from '../../src/pages/comments.page';
 import { HomePage } from '../../src/pages/home.page';
 import { expect, test } from '@playwright/test';
 
-test('homepage title', async ({ page }) => {
+test('homepage title @GAD-R01-01', async ({ page }) => {
   //Arrange
   const homePage = new HomePage(page);
 
@@ -15,7 +15,7 @@ test('homepage title', async ({ page }) => {
   expect(title).toContain('GAD');
 });
 
-test('articles page title', async ({ page }) => {
+test('articles page title @GAD-R01-02', async ({ page }) => {
   //Arrange
   const articlesPage = new ArticlesPage(page);
 
@@ -27,7 +27,7 @@ test('articles page title', async ({ page }) => {
   expect(title).toContain('Article');
 });
 
-test('comments page title', async ({ page }) => {
+test('comments page title @GAD-R01-03', async ({ page }) => {
   //Arrange
   const commentsPage = new CommentsPage(page);
 
