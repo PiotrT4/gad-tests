@@ -12,7 +12,7 @@
     "show-report": "npx playwright show-report",
     "format:check": "npx prettier . --check \"!**.ts\"",
     "tsc:check": "npx tsc --noEmit --pretty --strict",
-    "test:grep": "npx playwright test --grep \"@GAD-R01-01|@GAD-R01-02\""
+    "test:tag": "npx playwright test --grep \"@GAD-R01-01|@GAD-R01-02\""
   },
   "keywords": [],
   "author": "",
