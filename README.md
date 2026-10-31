@@ -14,6 +14,8 @@
 - install dependencies: `npm install`
 - setup Playwright with: `npx playwright install --with-deps chromium`
 - setup husky with: `npx husky`
+- prepare local env file and add to .gitignore: `cp .env-template  .env`
+- copy application main URL as value of `BASE_URL` variable in `.env` file
 
 # Tests for GAD application
 

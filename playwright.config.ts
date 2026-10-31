@@ -5,6 +5,7 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  globalSetup: 'src/global-setup.ts',
   fullyParallel: true,
   retries: 0,
   workers: undefined,
@@ -14,7 +15,7 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: process.env.BASE_URL,
     trace: 'on',
     video: 'retain-on-failure',
     screenshot: 'only-on-failure',
