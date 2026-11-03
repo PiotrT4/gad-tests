@@ -37,5 +37,14 @@ export default defineConfig([
       },
     },
   },
+  {
+    files: ['tests/**/*.ts'],
+    rules: {
+      'playwright/expect-expect': [
+        'warn',
+        { assertFunctionPatterns: ['^expect'] },
+      ],
+    },
+  },
   eslintPluginPrettierRecommended,
 ]);

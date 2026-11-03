@@ -1,6 +1,9 @@
 import { LoginPage } from '../../src/pages/login.page';
 import { WelcomePage } from '../../src/pages/welcome.page';
-import { testUser1 } from '../../src/test-data/user.data';
+import {
+  testUser1,
+  testUserWithIncorrectPassword,
+} from '../../src/test-data/user.data';
 import { expect, test } from '@playwright/test';
 
 test.describe('Verify login page', () => {
@@ -17,5 +20,25 @@ test.describe('Verify login page', () => {
 
     //Assert
     expect(await welcomePage.title()).toContain('Welcome');
+  });
+
+  test('Valid negative login with incorrect password', async ({ page }) => {
+    //Arrange
+    const loginPage = new LoginPage(page);
+    const userLogin = testUser1.userEmail;
+    const userIncorrectPassword =
+      testUserWithIncorrectPassword.userIncorrectPassword;
+
+    //Act
+    await loginPage.goto();
+    await loginPage.login(userLogin, userIncorrectPassword);
+
+    //Assert
+    // await expect.soft(await loginPage.loginErrorMessage).toHaveText('Invalid username or password');
+    // expect.soft(await loginPage.title()).toContain('Login');
+
+    // pod standardy Piotra
+    await loginPage.expectLoginErrorToHaveText('Invalid username or password');
+    await loginPage.expectLoginTitleToContain('Login');
   });
 });
