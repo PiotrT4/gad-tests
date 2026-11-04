@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 
 export class BasePage {
   url = '';
@@ -11,5 +11,9 @@ export class BasePage {
 
   async title(): Promise<string> {
     return this.page.title();
+  }
+
+  async expectTitleToContain(expectedTitle: string): Promise<void> {
+    expect(await this.page.title()).toContain(expectedTitle);
   }
 }

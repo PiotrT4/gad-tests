@@ -1,7 +1,7 @@
 import { ArticlesPage } from '../../src/pages/articles.page';
 import { CommentsPage } from '../../src/pages/comments.page';
 import { HomePage } from '../../src/pages/home.page';
-import { expect, test } from '@playwright/test';
+import { test } from '@playwright/test';
 
 test.describe('Verify menu main buttons', () => {
   test('comments button navigates to comments page @GAD_R01_03', async ({
@@ -16,8 +16,9 @@ test.describe('Verify menu main buttons', () => {
     await articlesPage.mainMenu.commentsButton.click();
 
     //Assert
-    const title = await commentsPage.title();
-    expect(title).toContain('Comments');
+    // const title = await commentsPage.title();
+    // expect(title).toContain('Comments');
+    commentsPage.expectTitleToContain('Comments');
   });
 
   test('articles button navigates to comments page @GAD_R01_04', async ({
@@ -32,8 +33,9 @@ test.describe('Verify menu main buttons', () => {
     await commentsPage.mainMenu.articlesButton.click();
 
     //Assert
-    const title = await articlesPage.title();
-    expect(title).toContain('Articles');
+    // const title = await articlesPage.title();
+    // expect(title).toContain('Articles');
+    articlesPage.expectTitleToContain('Articles');
   });
 
   test('home button navigate to homa page', async ({ page }) => {
@@ -46,7 +48,8 @@ test.describe('Verify menu main buttons', () => {
     await articlesPage.mainMenu.homeButton.click();
 
     //Assert
-    const title = await homePage.title();
-    expect(title).toContain('GAD');
+    // const title = await homePage.title();
+    // expect(title).toContain('GAD');
+    homePage.expectTitleToContain('GAD');
   });
 });

@@ -1,7 +1,7 @@
 import { ArticlesPage } from '../../src/pages/articles.page';
 import { CommentsPage } from '../../src/pages/comments.page';
 import { HomePage } from '../../src/pages/home.page';
-import { expect, test } from '@playwright/test';
+import { test } from '@playwright/test';
 
 test('homepage title @GAD-R01-01', async ({ page }) => {
   //Arrange
@@ -11,8 +11,9 @@ test('homepage title @GAD-R01-01', async ({ page }) => {
   await homePage.goto();
 
   // Assert
-  const title = await homePage.title();
-  expect(title).toContain('GAD');
+  // const title = await homePage.title();
+  // expect(title).toContain('GAD');
+  homePage.expectTitleToContain('GAD');
 });
 
 test('articles page title @GAD-R01-02', async ({ page }) => {
@@ -23,8 +24,9 @@ test('articles page title @GAD-R01-02', async ({ page }) => {
   await articlesPage.goto();
 
   // Assert
-  const title = await articlesPage.title();
-  expect(title).toContain('Article');
+  // const title = await articlesPage.title();
+  // expect(title).toContain('Article');
+  articlesPage.expectTitleToContain('Article');
 });
 
 test('comments page title @GAD-R01-03', async ({ page }) => {
@@ -35,6 +37,7 @@ test('comments page title @GAD-R01-03', async ({ page }) => {
   await commentsPage.goto();
 
   // Assert
-  const title = await commentsPage.title();
-  expect(title).toContain('Comments');
+  // const title = await commentsPage.title();
+  // expect(title).toContain('Comments');
+  commentsPage.expectTitleToContain('Comments');
 });

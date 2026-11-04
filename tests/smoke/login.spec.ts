@@ -4,7 +4,7 @@ import {
   testUser1,
   testUserWithIncorrectPassword,
 } from '../../src/test-data/user.data';
-import { expect, test } from '@playwright/test';
+import { test } from '@playwright/test';
 
 test.describe('Verify login page', () => {
   test('Valid positive login', async ({ page }) => {
@@ -19,7 +19,8 @@ test.describe('Verify login page', () => {
     await loginPage.login(userLogin, userPassword);
 
     //Assert
-    expect(await welcomePage.title()).toContain('Welcome');
+    // expect(await welcomePage.title()).toContain('Welcome');
+    welcomePage.expectTitleToContain('Welcome');
   });
 
   test('Valid negative login with incorrect password', async ({ page }) => {

@@ -3,6 +3,11 @@ import { Page, expect } from '@playwright/test';
 
 export class LoginPage extends BasePage {
   url = '/login';
+
+  loginInput = this.page.getByRole('textbox', { name: 'Enter User Email' });
+  passwordInput = this.page.getByRole('textbox', { name: 'Enter Password' });
+  loginButton = this.page.getByRole('button', { name: 'LogIn' });
+
   loginErrorMessage = this.page.getByTestId('login-error');
 
   constructor(page: Page) {
@@ -10,13 +15,9 @@ export class LoginPage extends BasePage {
   }
 
   async login(userLogin: string, userPassword: string): Promise<void> {
-    await this.page
-      .getByRole('textbox', { name: 'Enter User Email' })
-      .fill(userLogin);
-    await this.page
-      .getByRole('textbox', { name: 'Enter Password' })
-      .fill(userPassword);
-    await this.page.getByRole('button', { name: 'LogIn' }).click();
+    await this.loginInput.fill(userLogin);
+    await this.passwordInput.fill(userPassword);
+    await this.loginButton.click();
   }
 
   async expectLoginErrorToHaveText(errorMessage: string): Promise<void> {
