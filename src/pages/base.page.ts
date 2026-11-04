@@ -16,4 +16,8 @@ export class BasePage {
   async expectTitleToContain(expectedTitle: string): Promise<void> {
     expect(await this.page.title()).toContain(expectedTitle);
   }
+
+  async waitForUrl(): Promise<void> {
+    await this.page.waitForURL(this.url);
+  }
 }

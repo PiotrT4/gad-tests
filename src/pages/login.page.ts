@@ -2,7 +2,7 @@ import { BasePage } from './base.page';
 import { Page, expect } from '@playwright/test';
 
 export class LoginPage extends BasePage {
-  url = '/login';
+  url = '/login/';
 
   loginInput = this.page.getByRole('textbox', { name: 'Enter User Email' });
   passwordInput = this.page.getByRole('textbox', { name: 'Enter Password' });

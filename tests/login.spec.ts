@@ -1,9 +1,9 @@
-import { LoginPage } from '../../src/pages/login.page';
-import { WelcomePage } from '../../src/pages/welcome.page';
+import { LoginPage } from '../src/pages/login.page';
+import { WelcomePage } from '../src/pages/welcome.page';
 import {
   testUser1,
   testUserWithIncorrectPassword,
-} from '../../src/test-data/user.data';
+} from '../src/test-data/user.data';
 import { test } from '@playwright/test';
 
 test.describe('Verify login page', () => {
