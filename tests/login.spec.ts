@@ -11,12 +11,12 @@ test.describe('Verify login page', () => {
     //Arrange
     const loginPage = new LoginPage(page);
     const welcomePage = new WelcomePage(page);
-    const userLogin = testUser1.userEmail;
-    const userPassword = testUser1.userPassword;
+    // const userLogin = testUser1.userEmail;
+    // const userPassword = testUser1.userPassword;
 
     //Act
     await loginPage.goto();
-    await loginPage.login(userLogin, userPassword);
+    await loginPage.login(testUser1);
 
     //Assert
     // expect(await welcomePage.title()).toContain('Welcome');
@@ -26,13 +26,13 @@ test.describe('Verify login page', () => {
   test('Valid negative login with incorrect password', async ({ page }) => {
     //Arrange
     const loginPage = new LoginPage(page);
-    const userLogin = testUser1.userEmail;
-    const userIncorrectPassword =
-      testUserWithIncorrectPassword.userIncorrectPassword;
+    // const userLogin = testUser1.userEmail;
+    // const userIncorrectPassword =
+    //   testUserWithIncorrectPassword.userIncorrectPassword;
 
     //Act
     await loginPage.goto();
-    await loginPage.login(userLogin, userIncorrectPassword);
+    await loginPage.login(testUserWithIncorrectPassword);
 
     //Assert
     // await expect.soft(await loginPage.loginErrorMessage).toHaveText('Invalid username or password');

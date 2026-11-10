@@ -1,5 +1,6 @@
+import { RegisterUser } from '../models/registerUser.model';
 import { BasePage } from './base.page';
-import { Page } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 
 export class RegisterPage extends BasePage {
   url = '/register.html';
@@ -9,21 +10,23 @@ export class RegisterPage extends BasePage {
   emailInput = this.page.getByTestId('email-input');
   passwordInput = this.page.getByTestId('password-input');
   registerButton = this.page.getByTestId('register-button');
+  emailErrorMessage = this.page.getByText('Please provide a valid email');
 
   constructor(page: Page) {
     super(page);
   }
 
-  async register(
-    firstName: string,
-    lastName: string,
-    email: string,
-    password: string,
-  ): Promise<void> {
-    await this.firstNameInput.fill(firstName);
-    await this.lastNameInput.fill(lastName);
-    await this.emailInput.fill(email);
-    await this.passwordInput.fill(password);
+  async register(registerUserData: RegisterUser): Promise<void> {
+    await this.firstNameInput.fill(registerUserData.firstName);
+    await this.lastNameInput.fill(registerUserData.lastName);
+    await this.emailInput.fill(registerUserData.email);
+    await this.passwordInput.fill(registerUserData.password);
     await this.registerButton.click();
+  }
+
+  async expectEmailErrorMessageToContain(
+    expectedErrorMessage: string,
+  ): Promise<void> {
+    await expect(this.emailErrorMessage).toContainText(expectedErrorMessage);
   }
 }
